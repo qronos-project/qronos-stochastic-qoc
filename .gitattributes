@@ -1,0 +1,4 @@
+
+# attributes for files in git revision control
+
+*.sh eol=lf
