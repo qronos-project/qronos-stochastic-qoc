@@ -2,6 +2,12 @@
 % Example scripts start with worker_init and end with worker_finalize.
 
 clear
+
+% Reproducible initialization of the random number generator 
+% (Note: Simulink blocks have their own settings)
+rng(1, 'twister');
+
+
 time_worker_started = tic;
 param_global
 
