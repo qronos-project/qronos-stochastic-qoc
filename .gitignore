@@ -34,3 +34,5 @@ octave-workspace
 /*.slxc
 /qronos-qoc-*.zip
 /qronos-qoc.tar
+.directory
+*.kate-swp

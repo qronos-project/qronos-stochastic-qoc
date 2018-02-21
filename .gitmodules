@@ -1,12 +1,12 @@
 [submodule "MBeautifier"]
 	path = MBeautifier
-	url = git@github.com:MaxGaukler/MBeautifier.git
+	url = https://github.com/MaxGaukler/MBeautifier.git
 [submodule "matlab2tikz"]
 	path = matlab2tikz
-	url = git@github.com:matlab2tikz/matlab2tikz.git
+	url = https://github.com/matlab2tikz/matlab2tikz.git
 [submodule "matlab-xunit"]
 	path = matlab-xunit
-	url = git@github.com:psexton/matlab-xunit.git
+	url = https://github.com/psexton/matlab-xunit.git
 [submodule "git-archive-all.sh"]
 	path = git-archive-all.sh
-	url = git@github.com:MaxGaukler/git-archive-all.sh.git
+	url = https://github.com/MaxGaukler/git-archive-all.sh.git

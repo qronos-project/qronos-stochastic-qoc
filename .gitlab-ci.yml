@@ -1,0 +1,22 @@
+# Settings für Gitlab CI. See: https://docs.gitlab.com/ce/ci/yaml/README.html
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+# TODO provide docker support.
+# Currently, we require a 'shell' runner with matlab present.
+
+build:2015a:
+    variables:
+        QRONOS_QOC_MATLAB: /usr/local/MATLAB/R2015a/bin/matlab
+    script: ./run_all_unix.sh --fast
+
+build:2017b:
+    variables:
+        QRONOS_QOC_MATLAB: /usr/local/MATLAB/R2017b/bin/matlab
+    script: ./run_all_unix.sh --fast
+    
+    artifacts:
+        expire_in: 1 day
+        paths:
+            - plot-archive/

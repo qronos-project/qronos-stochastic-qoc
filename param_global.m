@@ -19,3 +19,10 @@ simulation_speedup_factor = 1;
 if (simulation_speedup_factor ~= 1)
     warning('Simulation has been shortened by enabling simulation_speedup_factor, at the cost of reduced accuracy (lower number of runs). Use this setting only for fast testing and not for numeric verification.')
 end
+
+% The speedup may also be enabled via environment variable for continuous
+% integration testing: set QRONOS_QOC_CI_SPEEDUP_ENABLED=1 to speed up.
+if (strcmp(getenv('QRONOS_QOC_CI_SPEEDUP_ENABLED'), '1'))
+    warning('Enabling simulation speedup as requested via environment variable')
+    simulation_speedup_factor = 10000;
+end
