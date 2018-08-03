@@ -37,7 +37,7 @@ classdef controlledSystem
             P0(end, end) = 1;
         end
         
-        % [Pnext, A] = elapse(P, delta_t, H)
+        % [Pnext, A, A_cont] = elapse(P, delta_t, H)
         % elapse time
         % arguments:
         %  P: state covariance matrix
@@ -45,14 +45,15 @@ classdef controlledSystem
         %  H: continuous noise covariance
         % returns:
         %  Pnext = new state covariance matrix
-        %  A = state transition matrix
-        function [Pnext, A] = elapse(self, P, delta_t, H)
-            A = zeros(length(P));
-            A(1:self.n_c, 1:self.n_c) = self.Ap;
-            A(1:self.n_c, self.n_c + self.n_d + self.n_y + (1:self.n_u)) = self.Bp;
+        %  A = state transition matrix = expm(A_cont*delta_t)
+        %  A_cont = continuous-time system matrix
+        function [Pnext, A, A_cont] = elapse(self, P, delta_t, H)
+            A_cont = zeros(length(P));
+            A_cont(1:self.n_c, 1:self.n_c) = self.Ap;
+            A_cont(1:self.n_c, self.n_c + self.n_d + self.n_y + (1:self.n_u)) = self.Bp;
             G = zeros(length(P), length(H));
             G(1:self.n_c, :) = self.Gp;
-            [Pnext, A] = stochasticJumplinearSystem.continuousUpdate(P, A, G, H, delta_t);
+            [Pnext, A] = stochasticJumplinearSystem.continuousUpdate(P, A_cont, G, H, delta_t);
         end
         
         % [Pnext, A] = sample(P, j)
